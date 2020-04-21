@@ -3,16 +3,14 @@ import DetailPresenter from "./DetailPresenter";
 
 export default class extends React.Component{
     state={
-        movieDetail=null,
-        showDetail=null,
-        error=null,
-        loading=true
+        result : null,
+        error : null,
+        loading : true
     }
     render(){
-        const{movieDetail, showDetail, error, loading}=this.state;
+        const{result, error, loading}=this.state;
         return(<DetailPresenter
-            movieDetail={movieDetail}
-            showDetail={showDetail}
+            result={result}
             error={error}
             loading={loading}
         />)
