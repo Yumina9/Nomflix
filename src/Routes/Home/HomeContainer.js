@@ -1,6 +1,6 @@
 import React from "react";
 import HomePresenter from "./HomePresenter";
-import { movieApi } from "api";
+import { moviesApi } from "api";
 
 export default class extends React.Component{
     state = {
@@ -15,25 +15,23 @@ export default class extends React.Component{
         try{
         const {
             data:{results : nowPlaying}
-        } = await movieApi.nowPlaying();
+        } = await moviesApi.nowPlaying();
         const{ 
             data:{results : upcoming} 
-        } = await movieApi.upcoming();
+        } = await moviesApi.upcoming();
         const{
             data:{results : popular}
-        } = await movieApi.popular();
-        throw Error();
+        } = await moviesApi.popular();
         this.setState({
             nowPlaying,
             upcoming,
             popular
-        })
-        console.log(upcoming);  
+        });
         
         } catch{
             this.setState({
-                error: "Can't find movies informaition."
-            })
+                error: "Can't find movie informaition."
+            });
 
         }finally{
             this.setState({
@@ -44,6 +42,7 @@ export default class extends React.Component{
 
     render() {
         const { nowPlaying, upcoming, popular, error, loading }= this.state;
+        console.log(this.state);
         return(<HomePresenter
         nowPlaying={nowPlaying}
         upcoming={upcoming}

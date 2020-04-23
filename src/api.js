@@ -1,9 +1,8 @@
-import axios from 'axios';
+import axios from "axios";
 
 const api = axios.create({
-    method : 'get',
-    url:"https://api.themoviedb.org/3/", 
-    responseType: 'stream'
+    baseURL:"https://api.themoviedb.org/3/", 
+    timeout:1000
 });
 
 api.interceptors.request.use(config=>{
@@ -14,7 +13,7 @@ api.interceptors.request.use(config=>{
 });
 
 
-export const  movieApi= {
+export const  moviesApi= {
     nowPlaying: () => api.get("movie/now_playing"),
     upcoming: () => api.get("movie/upcoming"),
     popular: () => api.get("movie/popular"),
@@ -30,7 +29,7 @@ export const  movieApi= {
     })
 }
 
-export const TVApi={
+export const tvApi={
     topRated: () => api.get("tv/top_rated"),
     popular: () => api.get("tv/popular"),
     airingToday: () => api.get("tv/airing_today"),
