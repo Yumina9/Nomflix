@@ -6,9 +6,9 @@ export default class extends React.Component{
     state={
         movieResults : null,
         tvResults : null,
-        searchTerm : "",
         error : null,
-        loading : false
+        loading : false,
+        searchTerm : ""
     };
 
     
