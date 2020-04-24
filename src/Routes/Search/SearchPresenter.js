@@ -5,7 +5,7 @@ import styled from "styled-components";
 const SearchPresenter = ({ movieResults, tvResults, error, searchTerm, loading, handleSubmit})=>
     null;
 
-SearchPresenter.PropTypes = {
+SearchPresenter.propTypes = {
     movieResults : PropTypes.array,
     tvResults : PropTypes.array,
     error : PropTypes.bool.isRequired,

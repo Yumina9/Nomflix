@@ -5,7 +5,7 @@ import styled from "styled-components";
 const DetailPresenter = ({ result, loading, error})=>
     null;
 
-DetailPresenter.PropTypes = {
+DetailPresenter.propTypes = {
     result: PropTypes.objecs, 
     loading: PropTypes.bool.isRequired, 
     error: PropTypes.string,
