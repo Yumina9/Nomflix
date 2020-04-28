@@ -3,36 +3,37 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Container = styled.div`
-    :not(:last-child) {      //마지막 child에는 margin-bottom을 주지 않겠다.   
-        margin-bottom: 50px;
-    }
+  :not(:last-child) {
+    //마지막 child에는 margin-bottom을 주지 않겠다.
+    margin-bottom: 50px;
+  }
 `;
 
 const Title = styled.span`
-    font-size : 14px;
-    font-weight: 600;
+  font-size: 14px;
+  font-weight: 600;
 `;
 
 const Grid = styled.div`
-    margin-top: 25px;
-    display:grid;
-    grid-template-columns:repeat(auto-fill, 125px);
-    grid-gap:25px;
+  margin-top: 25px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 125px);
+  grid-gap: 25px;
 `;
 
-const Section = ({ title, children })=>(
-    <Container>
-        <Title>{title}</Title>
-        <Grid>{children}</Grid>
-    </Container>
+const Section = ({ title, children }) => (
+  <Container>
+    <Title>{title}</Title>
+    <Grid>{children}</Grid>
+  </Container>
 );
 
 Section.propTypes = {
-    title : PropTypes.string,
-    children: PropTypes.oneOfType([
-        PropTypes.arrayOf(PropTypes.node),
-        PropTypes.node
-    ])
-}
+  title: PropTypes.string,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+};
 
 export default Section;
