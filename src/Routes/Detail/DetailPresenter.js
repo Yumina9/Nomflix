@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Loader from "Components/Loader";
@@ -60,6 +61,8 @@ const Item = styled.span``;
 const Divider = styled.span`
   margin: 0, 10px;
 `;
+
+const IMDB = styled.div``;
 
 const Overview = styled.p`
   font-size: 12px;
@@ -123,6 +126,11 @@ const DetailPresenter = ({ result, loading, error }) =>
                     : `${genre.name} / `
                 )}
             </Item>
+            {movie && (
+              <IMDB>
+                <a href={"https://www.imdb.com/title/" + `${imdb_id}`}>IMDB</a>
+              </IMDB>
+            )}
           </ItemContainer>
           <Overview>{result.overview}</Overview>
         </Data>
