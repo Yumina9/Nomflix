@@ -132,6 +132,9 @@ const DetailPresenter = ({ result, loading, error }) =>
             </IMDB>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
+          <button onClick={activateLasers}>YT Video</button>
+          <button onClick={activateLasers}>Production</button>
+          <button onClick={activateLasers}>Season</button>
         </Data>
       </Content>
     </Container>
