@@ -70,7 +70,7 @@ const Overview = styled.p`
   width: 50%;
 `;
 
-const DetailPresenter = ({ result, loading, error }) =>
+const DetailPresenter = ({ result, loading, error, isMovie }) =>
   loading ? (
     <>
       <Helmet>
@@ -125,16 +125,18 @@ const DetailPresenter = ({ result, loading, error }) =>
                     : `${genre.name} / `
                 )}
             </Item>
-            <IMDB>
-              <a href={"https://www.imdb.com/title/" + `${result.imdb_id}`}>
-                IMDB
-              </a>
-            </IMDB>
+            {isMovie && (
+              <IMDB>
+                <a href={"https://www.imdb.com/title/" + `${result.imdb_id}`}>
+                  IMDB
+                </a>
+              </IMDB>
+            )}
           </ItemContainer>
           <Overview>{result.overview}</Overview>
-          <button onClick={activateLasers}>YT Video</button>
-          <button onClick={activateLasers}>Production</button>
-          <button onClick={activateLasers}>Season</button>
+          <button>YT Video</button>
+          <button>Production</button>
+          <button>Season</button>
         </Data>
       </Content>
     </Container>
