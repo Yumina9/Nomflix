@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Loader from "Components/Loader";
+import DetailComponents from "Components/TabComponent";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -134,9 +135,7 @@ const DetailPresenter = ({ result, loading, error, isMovie }) =>
             )}
           </ItemContainer>
           <Overview>{result.overview}</Overview>
-          <button>YT Video</button>
-          <button>Production</button>
-          <button>Season</button>
+          <DetailComponents />
         </Data>
       </Content>
     </Container>
