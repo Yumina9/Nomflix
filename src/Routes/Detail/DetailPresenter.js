@@ -135,7 +135,7 @@ const DetailPresenter = ({ result, loading, error, isMovie }) =>
             )}
           </ItemContainer>
           <Overview>{result.overview}</Overview>
-          <DetailComponents />
+          <DetailComponents result={result} />
         </Data>
       </Content>
     </Container>
