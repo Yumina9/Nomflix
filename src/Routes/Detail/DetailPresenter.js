@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { Helmet } from "react-helmet";
 import Loader from "Components/Loader";
-import DetailComponents from "Components/TabComponent";
+import TabComponents from "Components/TabComponent";
 
 const Container = styled.div`
   height: calc(100vh - 50px);
@@ -71,7 +71,7 @@ const Overview = styled.p`
   width: 50%;
 `;
 
-const DetailPresenter = ({ result, loading, error, isMovie }) =>
+const DetailPresenter = ({ result, loading, error, isMovie, TvSeason }) =>
   loading ? (
     <>
       <Helmet>
@@ -135,7 +135,7 @@ const DetailPresenter = ({ result, loading, error, isMovie }) =>
             )}
           </ItemContainer>
           <Overview>{result.overview}</Overview>
-          <DetailComponents result={result} />
+          <TabComponents TvSeason={TvSeason} />
         </Data>
       </Content>
     </Container>
