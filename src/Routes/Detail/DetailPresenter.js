@@ -135,7 +135,7 @@ const DetailPresenter = ({ result, loading, error, isMovie, TvSeason }) =>
             )}
           </ItemContainer>
           <Overview>{result.overview}</Overview>
-          <TabComponents TvSeason={TvSeason} />
+          <TabComponents result={result} />
         </Data>
       </Content>
     </Container>

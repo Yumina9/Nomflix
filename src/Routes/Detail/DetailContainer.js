@@ -35,8 +35,6 @@ export default class extends React.Component {
         ({ data: result } = await moviesApi.movieDetail(parsedId)); // 전체를 묶은 ()가 'const =' 와 동일
       } else {
         ({ data: result } = await tvApi.showDetail(parsedId));
-        console.log(result);
-        console.log(await tvApi.TvSeason(parsedId));
       }
     } catch {
       this.setState({ error: "Can't find anything." });
@@ -47,7 +45,7 @@ export default class extends React.Component {
 
   render() {
     const { result, error, loading, isMovie } = this.state;
-
+    console.log(result);
     return (
       <DetailPresenter
         result={result}
