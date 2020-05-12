@@ -2,6 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Tab, TabList, Tabs, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
+import styled from "styled-components";
+
+const seasonId = styled.div`
+  img {
+    width: 100px;
+    height: 70px;
+  }
+`;
 
 const TabComponents = ({ result }) => {
   return (
@@ -12,23 +20,36 @@ const TabComponents = ({ result }) => {
         <Tab>Season</Tab>
       </TabList>
       <TabPanel>여긴 YT Video</TabPanel>
-      <TabPanel>여긴 Production</TabPanel>
       <TabPanel>
         {result &&
-          result.seasons.map((season) => (
+          result.production_companies.map((production_companies) => (
             <div>
               <ul>
-                <li>{season.name}</li>
-                <li>{season.season_number}</li>
-                <li>{season.overview}</li>
-                <li>{season.episode_count}</li>
-                <li>{season.air_date}</li>
+                <li>{production_companies.name}</li>
+                <li>{production_companies.origin_country}</li>
                 <img
-                  src={`https://image.tmdb.org/t/p/original${season.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/original${production_companies.logo_path}`}
+                  width="100px"
+                  height="100px"
                 />
               </ul>
             </div>
           ))}
+      </TabPanel>
+      <TabPanel>
+        <seasonId>
+          {result &&
+            result.seasons.map((season) => (
+              <div>
+                <ul>
+                  <img
+                    src={`https://image.tmdb.org/t/p/original${season.poster_path}`}
+                  />
+                  <li>{season.name}</li>
+                </ul>
+              </div>
+            ))}
+        </seasonId>
       </TabPanel>
     </Tabs>
   );
