@@ -4,11 +4,36 @@ import { Tab, TabList, Tabs, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import styled from "styled-components";
 
-const seasonId = styled.div`
+const YTVideo = styled.div`
+  padding: 10px;
+`;
+
+const Production = styled.div`
   img {
-    width: 100px;
-    height: 70px;
+    padding: 20px;
+    width: 200px;
+    height: 200px;
   }
+  h2 {
+    padding: 5px 20px;
+    font-size: 15px;
+  }
+`;
+
+const SeasonPosterWrapper = styled.div`
+  display: flex;
+`;
+
+const SeasonPoster = styled.div`
+  span {
+    float: left;
+  }
+  img {
+    width: 250px;
+    height: 250px;
+    border-radius: 5px;
+  }
+  margin: 5px;
 `;
 
 const TabComponents = ({ result }) => {
@@ -19,37 +44,47 @@ const TabComponents = ({ result }) => {
         <Tab>Production</Tab>
         <Tab>Season</Tab>
       </TabList>
-      <TabPanel>여긴 YT Video</TabPanel>
       <TabPanel>
         {result &&
-          result.production_companies.map((production_companies) => (
-            <div>
-              <ul>
-                <li>{production_companies.name}</li>
-                <li>{production_companies.origin_country}</li>
-                <img
-                  src={`https://image.tmdb.org/t/p/original${production_companies.logo_path}`}
-                  width="100px"
-                  height="100px"
-                />
-              </ul>
-            </div>
+          result.videos.results.map((results) => (
+            <YTVideo>
+              <iframe
+                width="560"
+                height="315"
+                src={`https://www.youtube.com/embed/${results.key}`}
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+              ></iframe>
+            </YTVideo>
           ))}
       </TabPanel>
       <TabPanel>
-        <seasonId>
+        {result &&
+          result.production_companies.map((production_companies) => (
+            <Production>
+              <img
+                src={`https://image.tmdb.org/t/p/original${production_companies.logo_path}`}
+              />
+              <h2>companies name : {production_companies.name}</h2>
+              <h2>companies country : {production_companies.origin_country}</h2>
+            </Production>
+          ))}
+      </TabPanel>
+      <TabPanel>
+        <SeasonPosterWrapper>
           {result &&
             result.seasons.map((season) => (
-              <div>
-                <ul>
+              <SeasonPoster>
+                <span>
                   <img
                     src={`https://image.tmdb.org/t/p/original${season.poster_path}`}
                   />
-                  <li>{season.name}</li>
-                </ul>
-              </div>
+                  {season.name}
+                </span>
+              </SeasonPoster>
             ))}
-        </seasonId>
+        </SeasonPosterWrapper>
       </TabPanel>
     </Tabs>
   );
