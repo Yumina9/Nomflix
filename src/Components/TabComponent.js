@@ -56,6 +56,11 @@ const TabComponents = ({ result }) => {
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen
               ></iframe>
+              <div class="w3-center">
+                <button class="w3-button demo" onclick="currentDiv(n)">
+                  {``}
+                </button>
+              </div>
             </YTVideo>
           ))}
       </TabPanel>
